@@ -70,9 +70,11 @@ while (1) {
    my $align_obj_B = Algnmnt->new( $fasta_B, {min_nongap_fraction => $min_frac_nongaps, min_nongap_chars => $min_nongaps} );
 
    my $alal_obj = AlignAlign->new($align_obj_A, $align_obj_B, {gg_score => 0.25});
-#   print $alal_obj->alal_cols($min_alal_frac);
+   print  $alal_obj->alal_cols($min_alal_frac);
 
     print $alal_obj->alal_fasta($min_alal_frac, $interleaved);
+
+#   print STDERR $alal_obj->alal_cols(), "\n";
    last;                   # for now just read one pair of alignments.
 }
 my $end_time = time();
@@ -92,7 +94,7 @@ sub next_align{
    my $fasta = '';
    while (<$fh>) {
       next if(/^\s*#/);
-      if (/^Id.*fam_size:\s*(\d+)/) {
+      if (/^Id/){  #.*fam_size:\s*(\d+)/) {
          $id_line = $_;
          $idline_famsize = $1;
          last;

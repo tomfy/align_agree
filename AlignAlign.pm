@@ -3,7 +3,7 @@ use strict;
 use List::Util qw ( min max sum );
 
 # The idea here is the object is constructed from two alignments of the same data,
-# e.g. one done with mafft and another done with muscle.
+# (e.g. one done with mafft and another done with muscle.)
 # This class knows how to align the two objects with each other,
 # using the Needleman-Wunsch algorithm
 # and then output the alignment of the alignments in various
@@ -298,7 +298,7 @@ sub BagreeA{
       } elsif ($cA eq '-' or $cB eq '-') {
          $agree_char = 'x';
       } else {
-         $agree_char = 'X';
+         $agree_char = '*';
       }
       $BagreeA .= $agree_char;
    }
